@@ -1,3 +1,5 @@
+package com.company;
+
 import com.company.Screen;
 
 import java.time.LocalDate;
