@@ -1,7 +1,3 @@
-package com.company;
-
-import com.company.Screen;
-
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;

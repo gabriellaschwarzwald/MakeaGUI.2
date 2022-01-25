@@ -1,15 +1,12 @@
-package com.company;
-
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.time.format.DateTimeFormatter;
 
 
-public class Screen<Person> extends JFrame{
+public class Screen extends JFrame {
     private JPanel panelMain;
     private JPanel panelLeft;
     private JPanel panelRight;
@@ -64,21 +61,23 @@ public class Screen<Person> extends JFrame{
         }
 
     }
-            public void addPerson(Person p) {
+
+    public void addPerson(Person p) {
                 people.add(p);
     }
 
-    public void main(String[] args){
+    public static void main(String[] args){
         Screen screen = new Screen();
         screen.setVisible(true);
 
-        Person sheldon = new Person(name "Sheldon Cooper", email "sheldon@gmail.com", phoneNumber "5550001", dateOfBirth "01/05/1980");
-        Person howard = new Person(name "Howard Wolowitz", email "howard@gmail.com", phoneNumber "5550002", dateOfBirth "28/11/1980");
-        Person raj = new Person(name "Rajesh Koothrappali", email "raj@gmail.com", phoneNumber "5550003", dateOfBirth "10/04/1980");
-        Person leonard = new Person(name "Leonard Hoftadter", email "leonard@gmail.com", phoneNumber "5550004", dateOfBirth "15/08/1980");
-        Person penny = new Person(name "Penny Hofstadter", email "penny@gmail.com", phoneNumber "5550005", dateOfBirth "30/02/1983");
-        Person bernadette = new Person(name "Bernadette Wolowitz", email "bernadette@gmail.com", phoneNumber "5550006", dateOfBirth "09/10/1981");
-        Person amy = new Person(name "Amy Farrah Fowler", email "amy@gmail.com", phoneNumber "5550007", dateOfBirth "23/06/1981");
+
+        Person sheldon = new Person("Sheldon Cooper", "sheldon@gmail.com", "5550001", "01/05/1980");
+        Person howard = new Person("Howard Wolowitz", "howard@gmail.com", "5550002", "28/11/1980");
+        Person raj = new Person("Rajesh Koothrappali", "raj@gmail.com", "5550003", "10/04/1980");
+        Person leonard = new Person("Leonard Hoftadter", "leonard@gmail.com", "5550004", "15/08/1980");
+        Person penny = new Person("Penny Hofstadter", "penny@gmail.com", "5550005", "30/02/1983");
+        Person bernadette = new Person("Bernadette Wolowitz", "bernadette@gmail.com", "5550006", "09/10/1981");
+        Person amy = new Person("Amy Farrah Fowler", "amy@gmail.com", "5550007", "23/06/1981");
 
         screen.addPerson(sheldon);
         screen.addPerson(howard);
