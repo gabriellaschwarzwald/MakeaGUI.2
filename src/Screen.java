@@ -4,6 +4,7 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.time.format.DateTimeFormatter;
 
 
 public class Screen extends JFrame {
@@ -13,10 +14,10 @@ public class Screen extends JFrame {
     private JList listPeople;
     private JButton buttonNew;
     private JButton buttonSave;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JTextField textField4;
+    private JTextField textName;
+    private JTextField textEmail;
+    private JTextField textPhoneNumber;
+    private JTextField textAddress;
     private JLabel labelAge;
     private JTextField textDateofbirth;
     private JPanel panelTop;
@@ -37,17 +38,45 @@ public class Screen extends JFrame {
         buttonNew.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Person p = new Person(
+                        textName.getText(),
+                        textEmail.getText(),
+                        textPhoneNumber.getText(),
+                        textDateofbirth.getText()
+                );
+                people.add(p);
+                refreshPeopleList();
+
+                int personNumber = listPeople.getSelectedIndex();
+                if (personNumber >= 0){
+                     p = people.get(personNumber);
+                    p.setName(textName.getText());
+                    p.setEmail(textEmail.getText());
+                    p.setPhoneNumber(textPhoneNumber.getText());
+                    p.setDateOfBirth(textDateofbirth.getText());
+                }
             }
         });
         buttonSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
             }
         });
 
         listPeople.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
+                int personNumber = listPeople.getSelectedIndex();
+                if (personNumber >= 0){
+                    Person p = people.get(personNumber);
+                    textName.setText(p.getName());
+                    textEmail.setText(p.getEmail());
+                    textPhoneNumber.setText(p.getPhoneNumber());
+                    textDateofbirth.setText(p.getDateOfBirth().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                    labelAge.setText(Integer.toString(p.getAge())+ "years");
+                    buttonSave.setEnabled(true);
+                } else {buttonSave.setEnabled(false);}
             }
         });
     }
